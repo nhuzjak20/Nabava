@@ -19,7 +19,11 @@ namespace Nabava
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (BoxKorisnickoIme.Text == "")
+            {
+                MessageBox.Show("Nije uneseno korisničko ime", MessageBoxButtons.OK);
+            }
+            else if (BoxLozinka.Text == "") MessageBox.Show("Nije unesena lozinka", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void label1_Click(object sender, EventArgs e)
