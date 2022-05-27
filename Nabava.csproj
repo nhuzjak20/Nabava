@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DBLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLLs\DBLayer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +53,11 @@
     <Compile Include="Nabava - Prijava.Designer.cs">
       <DependentUpon>Nabava - Prijava.cs</DependentUpon>
     </Compile>
+    <Compile Include="nhuzjak20_DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Podaci\Radnik.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +73,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="nhuzjak20_DBDataSet.xsc">
+      <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="nhuzjak20_DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>nhuzjak20_DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="nhuzjak20_DBDataSet.xss">
+      <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,7 +98,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DLLs\DBLayer.dll" />
+    <ProjectReference Include="..\DBLayer\DBLayer.csproj">
+      <Project>{b9adbbf9-38d9-4f3e-8a2a-1492f9a2f170}</Project>
+      <Name>DBLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

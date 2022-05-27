@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Nabava.Podaci;
+using Nabava.Liste;
 namespace Nabava
 {
     public partial class Form1 : Form
     {
+        public static List<Radnik> radnik { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -21,9 +23,23 @@ namespace Nabava
         {
             if (BoxKorisnickoIme.Text == "")
             {
-                MessageBox.Show("Nije uneseno korisničko ime", MessageBoxButtons.OK);
+                MessageBox.Show("Nije uneseno korisničko ime","Problem" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (BoxLozinka.Text == "") MessageBox.Show("Nije unesena lozinka", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (BoxLozinka.Text == "")
+            {
+                MessageBox.Show("Nije unesena lozinka","Problem" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                radnik = RadniciRepozitorij.PovuciRadnike();
+                foreach(var item in radnik)
+                {
+                    if(item.KorisnickoIme == BoxKorisnickoIme.Text && item.Lozinka == BoxLozinka.Text)
+                    {
+                        MessageBox.Show("Radi", "Radi", MessageBoxButtons.OK);
+                    }
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
