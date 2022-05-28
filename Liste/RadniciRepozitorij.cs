@@ -13,11 +13,11 @@ namespace Nabava.Liste
         public static List<Radnik> PovuciRadnike()
 
         {
-            DB.SetConfiguration("nhuzjak20_DB", "nhuzjak20", "C!79Do+;");
-            var radnik_lista = new List<Radnik>();
-            
+            DB.SetConfiguration("huzjaknikola_baza", "huzjaknikola_baza", "nikola55");
+            List<Radnik> radnik_lista = new List<Radnik>();
+            string sql = "SELECT * FROM dbo.LoginPodaci";
             DB.OpenConnection();
-            var podaci = DB.GetDataReader($"SELECT * FROM dbo.Tablica_Login");
+            var podaci = DB.GetDataReader(sql);
             while (podaci.Read())
             {
                 Radnik radnik = StvoriRadnika(podaci);

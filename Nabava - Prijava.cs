@@ -38,6 +38,11 @@ namespace Nabava
                     {
                         MessageBox.Show("Radi", "Radi", MessageBoxButtons.OK);
                     }
+                    else if(item.KorisnickoIme != BoxKorisnickoIme.Text || item.Lozinka != BoxLozinka.Text)
+                    {
+                        MessageBox.Show("Krivo uneseni podaci", "Problem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
         }
