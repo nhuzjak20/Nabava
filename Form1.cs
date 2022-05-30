@@ -7,33 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nabava.Liste;
+using Nabava.Podaci;
 
 namespace Nabava
 {
-    public partial class Form1 : Form
+    public partial class PrikazZahtjeva : Form
     {
-        public Form1()
+        public PrikazZahtjeva()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void PrikazZahtjeva_Load(object sender, EventArgs e)
         {
-            ShowStudents();
+        
         }
 
-        private void ShowStudents()
+        private void ZahtjeviLoad()
         {
-            var students = 3;
-            zahtjevi.DataSource = students;
-
-            zahtjevi.Columns["ID Zahtjeva"].DisplayIndex = 0;
-            zahtjevi.Columns["Naziv podnositelja"].DisplayIndex = 1;
-            zahtjevi.Columns["Način financiranja"].DisplayIndex = 2;
-            zahtjevi.Columns["Potvrda dekana"].DisplayIndex = 3;
+            
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void PrikazZahtjeva_Load_1(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'huzjaknikola_bazaDataSet.zahtjevi' table. You can move, or remove it, as needed.
+            this.zahtjeviTableAdapter.Fill(this.huzjaknikola_bazaDataSet.zahtjevi);
 
         }
     }

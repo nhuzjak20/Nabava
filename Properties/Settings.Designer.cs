@@ -33,5 +33,16 @@ namespace Nabava.Properties {
                 return ((string)(this["nhuzjak20_DBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql.bsite.net\\MSSQL2016;Initial Catalog=huzjaknikola_baza;User ID=huz" +
+            "jaknikola_baza;Password=nikola55")]
+        public string huzjaknikola_bazaConnectionString {
+            get {
+                return ((string)(this["huzjaknikola_bazaConnectionString"]));
+            }
+        }
     }
 }
