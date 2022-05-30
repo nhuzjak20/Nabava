@@ -625,6 +625,8 @@ namespace Nabava {
             
             private global::System.Data.DataColumn columnnacin_financiranja;
             
+            private global::System.Data.DataColumn columnrazlog;
+            
             private global::System.Data.DataColumn columndekan_potvrda;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -686,6 +688,14 @@ namespace Nabava {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn razlogColumn {
+                get {
+                    return this.columnrazlog;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn dekan_potvrdaColumn {
                 get {
                     return this.columndekan_potvrda;
@@ -729,12 +739,13 @@ namespace Nabava {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public zahtjeviRow AddzahtjeviRow(string naziv_podnositelja, string nacin_financiranja, int dekan_potvrda) {
+            public zahtjeviRow AddzahtjeviRow(int id, string naziv_podnositelja, string nacin_financiranja, string razlog, int dekan_potvrda) {
                 zahtjeviRow rowzahtjeviRow = ((zahtjeviRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        id,
                         naziv_podnositelja,
                         nacin_financiranja,
+                        razlog,
                         dekan_potvrda};
                 rowzahtjeviRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowzahtjeviRow);
@@ -768,6 +779,7 @@ namespace Nabava {
                 this.columnid = base.Columns["id"];
                 this.columnnaziv_podnositelja = base.Columns["naziv_podnositelja"];
                 this.columnnacin_financiranja = base.Columns["nacin_financiranja"];
+                this.columnrazlog = base.Columns["razlog"];
                 this.columndekan_potvrda = base.Columns["dekan_potvrda"];
             }
             
@@ -780,20 +792,20 @@ namespace Nabava {
                 base.Columns.Add(this.columnnaziv_podnositelja);
                 this.columnnacin_financiranja = new global::System.Data.DataColumn("nacin_financiranja", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnacin_financiranja);
+                this.columnrazlog = new global::System.Data.DataColumn("razlog", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrazlog);
                 this.columndekan_potvrda = new global::System.Data.DataColumn("dekan_potvrda", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndekan_potvrda);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
                 this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnnaziv_podnositelja.AllowDBNull = false;
                 this.columnnaziv_podnositelja.MaxLength = 50;
                 this.columnnacin_financiranja.AllowDBNull = false;
                 this.columnnacin_financiranja.MaxLength = 50;
+                this.columnrazlog.AllowDBNull = false;
+                this.columnrazlog.MaxLength = 250;
                 this.columndekan_potvrda.AllowDBNull = false;
             }
             
@@ -1024,6 +1036,17 @@ namespace Nabava {
                 }
                 set {
                     this[this.tablezahtjevi.nacin_financiranjaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string razlog {
+                get {
+                    return ((string)(this[this.tablezahtjevi.razlogColumn]));
+                }
+                set {
+                    this[this.tablezahtjevi.razlogColumn] = value;
                 }
             }
             
@@ -1594,39 +1617,43 @@ SELECT id, korisnickoime, lozinka, razina FROM LoginPodaci WHERE (id = @id)";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("naziv_podnositelja", "naziv_podnositelja");
             tableMapping.ColumnMappings.Add("nacin_financiranja", "nacin_financiranja");
+            tableMapping.ColumnMappings.Add("razlog", "razlog");
             tableMapping.ColumnMappings.Add("dekan_potvrda", "dekan_potvrda");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[zahtjevi] WHERE (([id] = @Original_id) AND ([naziv_podnositelj" +
-                "a] = @Original_naziv_podnositelja) AND ([nacin_financiranja] = @Original_nacin_f" +
-                "inanciranja) AND ([dekan_potvrda] = @Original_dekan_potvrda))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[zahtjevi] WHERE (([id] = @Original_id) AND ([naziv_podnositelja] = @Original_naziv_podnositelja) AND ([nacin_financiranja] = @Original_nacin_financiranja) AND ([razlog] = @Original_razlog) AND ([dekan_potvrda] = @Original_dekan_potvrda))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_naziv_podnositelja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "naziv_podnositelja", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nacin_financiranja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nacin_financiranja", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_razlog", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "razlog", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dekan_potvrda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dekan_potvrda", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[zahtjevi] ([naziv_podnositelja], [nacin_financiranja], [dekan_potvrda]) VALUES (@naziv_podnositelja, @nacin_financiranja, @dekan_potvrda);
-SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[zahtjevi] ([id], [naziv_podnositelja], [nacin_financiranja], [razlog], [dekan_potvrda]) VALUES (@id, @naziv_podnositelja, @nacin_financiranja, @razlog, @dekan_potvrda);
+SELECT id, naziv_podnositelja, nacin_financiranja, razlog, dekan_potvrda FROM zahtjevi WHERE (id = @id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@naziv_podnositelja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "naziv_podnositelja", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nacin_financiranja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nacin_financiranja", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@razlog", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "razlog", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dekan_potvrda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dekan_potvrda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[zahtjevi] SET [naziv_podnositelja] = @naziv_podnositelja, [nacin_financiranja] = @nacin_financiranja, [dekan_potvrda] = @dekan_potvrda WHERE (([id] = @Original_id) AND ([naziv_podnositelja] = @Original_naziv_podnositelja) AND ([nacin_financiranja] = @Original_nacin_financiranja) AND ([dekan_potvrda] = @Original_dekan_potvrda));
-SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[zahtjevi] SET [id] = @id, [naziv_podnositelja] = @naziv_podnositelja, [nacin_financiranja] = @nacin_financiranja, [razlog] = @razlog, [dekan_potvrda] = @dekan_potvrda WHERE (([id] = @Original_id) AND ([naziv_podnositelja] = @Original_naziv_podnositelja) AND ([nacin_financiranja] = @Original_nacin_financiranja) AND ([razlog] = @Original_razlog) AND ([dekan_potvrda] = @Original_dekan_potvrda));
+SELECT id, naziv_podnositelja, nacin_financiranja, razlog, dekan_potvrda FROM zahtjevi WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@naziv_podnositelja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "naziv_podnositelja", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nacin_financiranja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nacin_financiranja", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@razlog", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "razlog", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dekan_potvrda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dekan_potvrda", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_naziv_podnositelja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "naziv_podnositelja", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nacin_financiranja", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nacin_financiranja", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_razlog", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "razlog", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dekan_potvrda", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dekan_potvrda", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1642,8 +1669,8 @@ SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi W
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM dbo.zahtjev" +
-                "i";
+            this._commandCollection[0].CommandText = "SELECT id, naziv_podnositelja, nacin_financiranja, razlog, dekan_potvrda FROM dbo" +
+                ".zahtjevi";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1704,7 +1731,7 @@ SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_naziv_podnositelja, string Original_nacin_financiranja, int Original_dekan_potvrda) {
+        public virtual int Delete(int Original_id, string Original_naziv_podnositelja, string Original_nacin_financiranja, string Original_razlog, int Original_dekan_potvrda) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_naziv_podnositelja == null)) {
                 throw new global::System.ArgumentNullException("Original_naziv_podnositelja");
@@ -1718,7 +1745,13 @@ SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi W
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_nacin_financiranja));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_dekan_potvrda));
+            if ((Original_razlog == null)) {
+                throw new global::System.ArgumentNullException("Original_razlog");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_razlog));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_dekan_potvrda));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1739,20 +1772,27 @@ SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string naziv_podnositelja, string nacin_financiranja, int dekan_potvrda) {
+        public virtual int Insert(int id, string naziv_podnositelja, string nacin_financiranja, string razlog, int dekan_potvrda) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id));
             if ((naziv_podnositelja == null)) {
                 throw new global::System.ArgumentNullException("naziv_podnositelja");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(naziv_podnositelja));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(naziv_podnositelja));
             }
             if ((nacin_financiranja == null)) {
                 throw new global::System.ArgumentNullException("nacin_financiranja");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(nacin_financiranja));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(nacin_financiranja));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(dekan_potvrda));
+            if ((razlog == null)) {
+                throw new global::System.ArgumentNullException("razlog");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(razlog));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(dekan_potvrda));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1773,35 +1813,47 @@ SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string naziv_podnositelja, string nacin_financiranja, int dekan_potvrda, int Original_id, string Original_naziv_podnositelja, string Original_nacin_financiranja, int Original_dekan_potvrda, int id) {
+        public virtual int Update(int id, string naziv_podnositelja, string nacin_financiranja, string razlog, int dekan_potvrda, int Original_id, string Original_naziv_podnositelja, string Original_nacin_financiranja, string Original_razlog, int Original_dekan_potvrda) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id));
             if ((naziv_podnositelja == null)) {
                 throw new global::System.ArgumentNullException("naziv_podnositelja");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(naziv_podnositelja));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(naziv_podnositelja));
             }
             if ((nacin_financiranja == null)) {
                 throw new global::System.ArgumentNullException("nacin_financiranja");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(nacin_financiranja));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(nacin_financiranja));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(dekan_potvrda));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_id));
+            if ((razlog == null)) {
+                throw new global::System.ArgumentNullException("razlog");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(razlog));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(dekan_potvrda));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_id));
             if ((Original_naziv_podnositelja == null)) {
                 throw new global::System.ArgumentNullException("Original_naziv_podnositelja");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_naziv_podnositelja));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_naziv_podnositelja));
             }
             if ((Original_nacin_financiranja == null)) {
                 throw new global::System.ArgumentNullException("Original_nacin_financiranja");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_nacin_financiranja));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_nacin_financiranja));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_dekan_potvrda));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(id));
+            if ((Original_razlog == null)) {
+                throw new global::System.ArgumentNullException("Original_razlog");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_razlog));
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_dekan_potvrda));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1822,8 +1874,8 @@ SELECT id, naziv_podnositelja, nacin_financiranja, dekan_potvrda FROM zahtjevi W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string naziv_podnositelja, string nacin_financiranja, int dekan_potvrda, int Original_id, string Original_naziv_podnositelja, string Original_nacin_financiranja, int Original_dekan_potvrda) {
-            return this.Update(naziv_podnositelja, nacin_financiranja, dekan_potvrda, Original_id, Original_naziv_podnositelja, Original_nacin_financiranja, Original_dekan_potvrda, Original_id);
+        public virtual int Update(string naziv_podnositelja, string nacin_financiranja, string razlog, int dekan_potvrda, int Original_id, string Original_naziv_podnositelja, string Original_nacin_financiranja, string Original_razlog, int Original_dekan_potvrda) {
+            return this.Update(Original_id, naziv_podnositelja, nacin_financiranja, razlog, dekan_potvrda, Original_id, Original_naziv_podnositelja, Original_nacin_financiranja, Original_razlog, Original_dekan_potvrda);
         }
     }
     

@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lista_zahtjeva.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lista_zahtjeva.Designer.cs">
-      <DependentUpon>Lista_zahtjeva.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dodaj_zahtjev.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,20 +57,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>huzjaknikola_bazaDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Liste\Lista_zahtjeva.cs" />
-    <Compile Include="nhuzjak20_DBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
+    <Compile Include="Lista_zahtjeva.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Lista_zahtjeva.Designer.cs">
+      <DependentUpon>Lista_zahtjeva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liste\Lista_zahtjeva.cs" />
     <Compile Include="Podaci\Zahtjev.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Lista_zahtjeva.resx">
-      <DependentUpon>Lista_zahtjeva.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dodaj_zahtjev.resx">
       <DependentUpon>Dodaj_zahtjev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lista_zahtjeva.resx">
+      <DependentUpon>Lista_zahtjeva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,17 +92,6 @@
     </None>
     <None Include="huzjaknikola_bazaDataSet.xss">
       <DependentUpon>huzjaknikola_bazaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="nhuzjak20_DBDataSet.xsc">
-      <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="nhuzjak20_DBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>nhuzjak20_DBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="nhuzjak20_DBDataSet.xss">
-      <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
