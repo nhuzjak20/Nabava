@@ -65,6 +65,11 @@
     </Compile>
     <Compile Include="Liste\Lista_zahtjeva.cs" />
     <Compile Include="Podaci\Zahtjev.cs" />
+    <Compile Include="Podaci_za_faks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Podaci_za_faks.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dodaj_zahtjev.resx">
@@ -92,6 +97,17 @@
     </None>
     <None Include="huzjaknikola_bazaDataSet.xss">
       <DependentUpon>huzjaknikola_bazaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Podaci_za_faks.xsc">
+      <DependentUpon>Podaci_za_faks.xsd</DependentUpon>
+    </None>
+    <None Include="Podaci_za_faks.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Podaci_za_faks.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Podaci_za_faks.xss">
+      <DependentUpon>Podaci_za_faks.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

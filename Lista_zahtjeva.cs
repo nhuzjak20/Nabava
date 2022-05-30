@@ -19,17 +19,19 @@ namespace Nabava
 
         private void Lista_zahtjeva_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'huzjaknikola_bazaDataSet1.zahtjevi' table. You can move, or remove it, as needed.
-            this.zahtjeviTableAdapter1.Fill(this.huzjaknikola_bazaDataSet1.zahtjevi);
-            // TODO: This line of code loads data into the 'huzjaknikola_bazaDataSet.zahtjevi' table. You can move, or remove it, as needed.
-           // this.zahtjeviTableAdapter.Fill(this.huzjaknikola_bazaDataSet.zahtjevi);
-
+            // TODO: This line of code loads data into the 'podaci_za_faks.zahtjevi' table. You can move, or remove it, as needed.
+            this.zahtjeviTableAdapter3.Fill(this.podaci_za_faks.zahtjevi);
         }
 
         private void podnesi_zahtjev_gmb_Click(object sender, EventArgs e)
         {
             dodavanje_zahtjeva fm = new dodavanje_zahtjeva();
             fm.ShowDialog();
+        }
+
+        private void osvjezi_gmb_Click(object sender, EventArgs e)
+        {
+            this.zahtjeviTableAdapter3.Fill(this.podaci_za_faks.zahtjevi);
         }
     }
 }

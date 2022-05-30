@@ -29,12 +29,13 @@ namespace Nabava
             string upit = $"INSERT INTO dbo.zahtjevi(naziv_podnositelja, nacin_financiranja, razlog, dekan_potvrda) VALUES ('" + naziv_podnositelja_box.Text + "', '" + način_financiranja_box.Text + "', '" + razlog_zahtjev_box + "' , 1);";
             DB.ExecuteCommand(upit);
             DB.CloseConnection();
+            MessageBox.Show("Obavijest", "Podaci su uneseni", MessageBoxButtons.OK);
+            
         }
 
         private void nazad_Click(object sender, EventArgs e)
         {
-            Lista_zahtjeva fr = new Lista_zahtjeva();
-            fr.ShowDialog();
+            this.Close();
         }
     }
 }
