@@ -30,18 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.huzjaknikola_bazaDataSet = new Nabava.huzjaknikola_bazaDataSet();
             this.zahtjeviBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zahtjeviTableAdapter = new Nabava.huzjaknikola_bazaDataSetTableAdapters.zahtjeviTableAdapter();
             this.podnesi_zahtjev_gmb = new System.Windows.Forms.Button();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazivpodnositeljaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nacinfinanciranjaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.razlogDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dekanpotvrdaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.huzjaknikola_bazaDataSet1 = new Nabava.huzjaknikola_bazaDataSet();
+            this.zahtjeviBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.zahtjeviTableAdapter1 = new Nabava.huzjaknikola_bazaDataSetTableAdapters.zahtjeviTableAdapter();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -49,32 +51,22 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nazivpodnositeljaDataGridViewTextBoxColumn,
-            this.nacinfinanciranjaDataGridViewTextBoxColumn,
-            this.razlogDataGridViewTextBoxColumn,
-            this.dekanpotvrdaDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.zahtjeviBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridView1.DataSource = this.zahtjeviBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(25, 21);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(747, 224);
+            this.dataGridView1.Size = new System.Drawing.Size(912, 224);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // huzjaknikola_bazaDataSet
-            // 
-            this.huzjaknikola_bazaDataSet.DataSetName = "huzjaknikola_bazaDataSet";
-            this.huzjaknikola_bazaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // zahtjeviBindingSource
             // 
             this.zahtjeviBindingSource.DataMember = "zahtjevi";
-            this.zahtjeviBindingSource.DataSource = this.huzjaknikola_bazaDataSet;
-            // 
-            // zahtjeviTableAdapter
-            // 
-            this.zahtjeviTableAdapter.ClearBeforeFill = true;
             // 
             // podnesi_zahtjev_gmb
             // 
@@ -86,59 +78,74 @@
             this.podnesi_zahtjev_gmb.UseVisualStyleBackColor = true;
             this.podnesi_zahtjev_gmb.Click += new System.EventHandler(this.podnesi_zahtjev_gmb_Click);
             // 
-            // idDataGridViewTextBoxColumn
+            // huzjaknikola_bazaDataSet1
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "ID zahtjeva";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 125;
+            this.huzjaknikola_bazaDataSet1.DataSetName = "huzjaknikola_bazaDataSet";
+            this.huzjaknikola_bazaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // nazivpodnositeljaDataGridViewTextBoxColumn
+            // zahtjeviBindingSource1
             // 
-            this.nazivpodnositeljaDataGridViewTextBoxColumn.DataPropertyName = "naziv_podnositelja";
-            this.nazivpodnositeljaDataGridViewTextBoxColumn.HeaderText = "Naziv Podnositelja";
-            this.nazivpodnositeljaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nazivpodnositeljaDataGridViewTextBoxColumn.Name = "nazivpodnositeljaDataGridViewTextBoxColumn";
-            this.nazivpodnositeljaDataGridViewTextBoxColumn.Width = 125;
+            this.zahtjeviBindingSource1.DataMember = "zahtjevi";
+            this.zahtjeviBindingSource1.DataSource = this.huzjaknikola_bazaDataSet1;
             // 
-            // nacinfinanciranjaDataGridViewTextBoxColumn
+            // zahtjeviTableAdapter1
             // 
-            this.nacinfinanciranjaDataGridViewTextBoxColumn.DataPropertyName = "nacin_financiranja";
-            this.nacinfinanciranjaDataGridViewTextBoxColumn.HeaderText = "Način Financiranja";
-            this.nacinfinanciranjaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nacinfinanciranjaDataGridViewTextBoxColumn.Name = "nacinfinanciranjaDataGridViewTextBoxColumn";
-            this.nacinfinanciranjaDataGridViewTextBoxColumn.Width = 125;
+            this.zahtjeviTableAdapter1.ClearBeforeFill = true;
             // 
-            // razlogDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.razlogDataGridViewTextBoxColumn.DataPropertyName = "razlog";
-            this.razlogDataGridViewTextBoxColumn.HeaderText = "Zahtjev";
-            this.razlogDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.razlogDataGridViewTextBoxColumn.Name = "razlogDataGridViewTextBoxColumn";
-            this.razlogDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // dekanpotvrdaDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.dekanpotvrdaDataGridViewTextBoxColumn.DataPropertyName = "dekan_potvrda";
-            this.dekanpotvrdaDataGridViewTextBoxColumn.HeaderText = "Potvrda dekana";
-            this.dekanpotvrdaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dekanpotvrdaDataGridViewTextBoxColumn.Name = "dekanpotvrdaDataGridViewTextBoxColumn";
-            this.dekanpotvrdaDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "naziv_podnositelja";
+            this.dataGridViewTextBoxColumn2.HeaderText = "naziv_podnositelja";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "nacin_financiranja";
+            this.dataGridViewTextBoxColumn3.HeaderText = "nacin_financiranja";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "razlog";
+            this.dataGridViewTextBoxColumn4.HeaderText = "razlog";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "dekan_potvrda";
+            this.dataGridViewTextBoxColumn5.HeaderText = "dekan_potvrda";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // Lista_zahtjeva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(970, 450);
             this.Controls.Add(this.podnesi_zahtjev_gmb);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Lista_zahtjeva";
             this.Text = "Lista_zahtjeva";
             this.Load += new System.EventHandler(this.Lista_zahtjeva_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -155,5 +162,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nacinfinanciranjaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn razlogDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dekanpotvrdaDataGridViewTextBoxColumn;
+        private huzjaknikola_bazaDataSet huzjaknikola_bazaDataSet1;
+        private System.Windows.Forms.BindingSource zahtjeviBindingSource1;
+        private huzjaknikola_bazaDataSetTableAdapters.zahtjeviTableAdapter zahtjeviTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }
