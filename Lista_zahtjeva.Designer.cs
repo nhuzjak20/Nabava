@@ -30,18 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PrikazaniZahtjevi = new System.Windows.Forms.DataGridView();
-            this.huzjaknikola_bazaDataSet = new Nabava.huzjaknikola_bazaDataSet();
-            this.huzjaknikolabazaDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zahtjeviBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zahtjeviTableAdapter = new Nabava.huzjaknikola_bazaDataSetTableAdapters.zahtjeviTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazivpodnositeljaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nacinfinanciranjaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dekanpotvrdaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zahtjeviBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.huzjaknikolabazaDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.huzjaknikola_bazaDataSet = new Nabava.huzjaknikola_bazaDataSet();
+            this.zahtjeviTableAdapter = new Nabava.huzjaknikola_bazaDataSetTableAdapters.zahtjeviTableAdapter();
+            this.DodajZahtjevGumb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PrikazaniZahtjevi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikolabazaDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikolabazaDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // PrikazaniZahtjevi
@@ -60,25 +61,6 @@
             this.PrikazaniZahtjevi.RowTemplate.Height = 24;
             this.PrikazaniZahtjevi.Size = new System.Drawing.Size(735, 150);
             this.PrikazaniZahtjevi.TabIndex = 0;
-            // 
-            // huzjaknikola_bazaDataSet
-            // 
-            this.huzjaknikola_bazaDataSet.DataSetName = "huzjaknikola_bazaDataSet";
-            this.huzjaknikola_bazaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // huzjaknikolabazaDataSetBindingSource
-            // 
-            this.huzjaknikolabazaDataSetBindingSource.DataSource = this.huzjaknikola_bazaDataSet;
-            this.huzjaknikolabazaDataSetBindingSource.Position = 0;
-            // 
-            // zahtjeviBindingSource
-            // 
-            this.zahtjeviBindingSource.DataMember = "zahtjevi";
-            this.zahtjeviBindingSource.DataSource = this.huzjaknikolabazaDataSetBindingSource;
-            // 
-            // zahtjeviTableAdapter
-            // 
-            this.zahtjeviTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -113,19 +95,49 @@
             this.dekanpotvrdaDataGridViewTextBoxColumn.Name = "dekanpotvrdaDataGridViewTextBoxColumn";
             this.dekanpotvrdaDataGridViewTextBoxColumn.Width = 125;
             // 
+            // zahtjeviBindingSource
+            // 
+            this.zahtjeviBindingSource.DataMember = "zahtjevi";
+            this.zahtjeviBindingSource.DataSource = this.huzjaknikolabazaDataSetBindingSource;
+            // 
+            // huzjaknikolabazaDataSetBindingSource
+            // 
+            this.huzjaknikolabazaDataSetBindingSource.DataSource = this.huzjaknikola_bazaDataSet;
+            this.huzjaknikolabazaDataSetBindingSource.Position = 0;
+            // 
+            // huzjaknikola_bazaDataSet
+            // 
+            this.huzjaknikola_bazaDataSet.DataSetName = "huzjaknikola_bazaDataSet";
+            this.huzjaknikola_bazaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // zahtjeviTableAdapter
+            // 
+            this.zahtjeviTableAdapter.ClearBeforeFill = true;
+            // 
+            // DodajZahtjevGumb
+            // 
+            this.DodajZahtjevGumb.Location = new System.Drawing.Point(40, 177);
+            this.DodajZahtjevGumb.Name = "DodajZahtjevGumb";
+            this.DodajZahtjevGumb.Size = new System.Drawing.Size(128, 28);
+            this.DodajZahtjevGumb.TabIndex = 1;
+            this.DodajZahtjevGumb.Text = "Dodaj Zahtjev";
+            this.DodajZahtjevGumb.UseVisualStyleBackColor = true;
+            this.DodajZahtjevGumb.Click += new System.EventHandler(this.DodajZahtjevGumb_Click);
+            // 
             // PrikazZahtjeva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DodajZahtjevGumb);
             this.Controls.Add(this.PrikazaniZahtjevi);
             this.Name = "PrikazZahtjeva";
             this.Text = "Prikaz zahtjeva";
             this.Load += new System.EventHandler(this.PrikazZahtjeva_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.PrikazaniZahtjevi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikolabazaDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikolabazaDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.huzjaknikola_bazaDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -141,5 +153,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nazivpodnositeljaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nacinfinanciranjaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dekanpotvrdaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button DodajZahtjevGumb;
     }
 }
