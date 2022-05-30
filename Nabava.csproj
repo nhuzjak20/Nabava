@@ -52,13 +52,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Liste\RadniciRepozitorij.cs" />
+    <Compile Include="Liste\Lista_zahtjeva.cs" />
     <Compile Include="nhuzjak20_DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>nhuzjak20_DBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Podaci\Radnik.cs" />
+    <Compile Include="Podaci\Zahtjev.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
