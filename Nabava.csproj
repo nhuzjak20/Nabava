@@ -65,6 +65,13 @@
       <DependentUpon>Lista_zahtjeva.cs</DependentUpon>
     </Compile>
     <Compile Include="Liste\Lista_zahtjeva.cs" />
+    <Compile Include="Odobri_zahtjev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Odobri_zahtjev.Designer.cs">
+      <DependentUpon>Odobri_zahtjev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Podaci\promjena_zahtjeva.cs" />
     <Compile Include="Podaci\Zahtjev.cs" />
     <Compile Include="Podaci_za_faks.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -78,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lista_zahtjeva.resx">
       <DependentUpon>Lista_zahtjeva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Odobri_zahtjev.resx">
+      <DependentUpon>Odobri_zahtjev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
