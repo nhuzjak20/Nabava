@@ -38,7 +38,7 @@
             this.zahtjeviTableAdapter3 = new Nabava.Podaci_za_faksTableAdapters.zahtjeviTableAdapter();
             this.osvjezi_gmb = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pretrazi_txtbox = new System.Windows.Forms.TextBox();
+            this.box_text_upis = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource2)).BeginInit();
@@ -103,19 +103,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(895, 218);
             this.dataGridView1.TabIndex = 4;
             // 
-            // pretrazi_txtbox
+            // box_text_upis
             // 
-            this.pretrazi_txtbox.Location = new System.Drawing.Point(826, 12);
-            this.pretrazi_txtbox.Name = "pretrazi_txtbox";
-            this.pretrazi_txtbox.Size = new System.Drawing.Size(100, 22);
-            this.pretrazi_txtbox.TabIndex = 5;
+            this.box_text_upis.Location = new System.Drawing.Point(826, 12);
+            this.box_text_upis.Name = "box_text_upis";
+            this.box_text_upis.Size = new System.Drawing.Size(100, 22);
+            this.box_text_upis.TabIndex = 5;
+            this.box_text_upis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_text_upis_KeyPress);
             // 
             // Lista_zahtjeva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 340);
-            this.Controls.Add(this.pretrazi_txtbox);
+            this.Controls.Add(this.box_text_upis);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.osvjezi_gmb);
             this.Controls.Add(this.podnesi_zahtjev_gmb);
@@ -159,6 +160,6 @@
         private Podaci_za_faksTableAdapters.zahtjeviTableAdapter zahtjeviTableAdapter3;
         private System.Windows.Forms.Button osvjezi_gmb;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox pretrazi_txtbox;
+        private System.Windows.Forms.TextBox box_text_upis;
     }
 }
