@@ -34,6 +34,20 @@ namespace Nabava
             dataGridView1.DataSource = dt; 
             conn.Close();
         }
+
+        private void txtSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            SearchData(pretrazi_txtbox.Text);
+        }
+        public void SearchData(string search)
+        {
+            conn.Open();
+            string query = "SELECT * FROM dbo.zahtjevi WHERE naziv_podnositelja'%"+ search +"&'";
+            adapter = new SqlDataAdapter(query, conn);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridView1.DataSource= dt;
+        }
         private void Lista_zahtjeva_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'podaci_za_faks.zahtjevi' table. You can move, or remove it, as needed.
@@ -48,7 +62,7 @@ namespace Nabava
 
         private void osvjezi_gmb_Click(object sender, EventArgs e)
         {
-            this.zahtjeviTableAdapter3.Fill(this.podaci_za_faks.zahtjevi);
+            //this.zahtjeviTableAdapter3.Fill(this.podaci_za_faks.zahtjevi);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
