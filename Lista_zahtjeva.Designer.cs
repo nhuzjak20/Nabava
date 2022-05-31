@@ -29,24 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.zahtjeviBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.zahtjeviBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.podnesi_zahtjev_gmb = new System.Windows.Forms.Button();
+            this.zahtjeviBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.zahtjeviBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.podaci_za_faks = new Nabava.Podaci_za_faks();
             this.zahtjeviTableAdapter3 = new Nabava.Podaci_za_faksTableAdapters.zahtjeviTableAdapter();
             this.osvjezi_gmb = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.box_text_upis = new System.Windows.Forms.TextBox();
-            this.zahtjeviBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.zahtjeviBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zahtjeviBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.promjeni_stanje_gmb = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.podaci_za_faks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podaci_za_faks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // zahtjeviBindingSource1
+            // 
+            this.zahtjeviBindingSource1.DataMember = "zahtjevi";
+            // 
+            // zahtjeviBindingSource
+            // 
+            this.zahtjeviBindingSource.DataMember = "zahtjevi";
             // 
             // podnesi_zahtjev_gmb
             // 
@@ -57,6 +64,10 @@
             this.podnesi_zahtjev_gmb.Text = "Podnesi Zahtjev";
             this.podnesi_zahtjev_gmb.UseVisualStyleBackColor = true;
             this.podnesi_zahtjev_gmb.Click += new System.EventHandler(this.podnesi_zahtjev_gmb_Click);
+            // 
+            // zahtjeviBindingSource2
+            // 
+            this.zahtjeviBindingSource2.DataMember = "zahtjevi";
             // 
             // zahtjeviBindingSource3
             // 
@@ -92,7 +103,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(895, 218);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // box_text_upis
             // 
@@ -102,34 +112,11 @@
             this.box_text_upis.TabIndex = 5;
             this.box_text_upis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_text_upis_KeyPress);
             // 
-            // zahtjeviBindingSource1
-            // 
-            this.zahtjeviBindingSource1.DataMember = "zahtjevi";
-            // 
-            // zahtjeviBindingSource
-            // 
-            this.zahtjeviBindingSource.DataMember = "zahtjevi";
-            // 
-            // zahtjeviBindingSource2
-            // 
-            this.zahtjeviBindingSource2.DataMember = "zahtjevi";
-            // 
-            // promjeni_stanje_gmb
-            // 
-            this.promjeni_stanje_gmb.Location = new System.Drawing.Point(185, 277);
-            this.promjeni_stanje_gmb.Name = "promjeni_stanje_gmb";
-            this.promjeni_stanje_gmb.Size = new System.Drawing.Size(113, 29);
-            this.promjeni_stanje_gmb.TabIndex = 6;
-            this.promjeni_stanje_gmb.Text = "Promjeni stanje zahtjeva";
-            this.promjeni_stanje_gmb.UseVisualStyleBackColor = true;
-            this.promjeni_stanje_gmb.Click += new System.EventHandler(this.promjeni_stanje_gmb_Click);
-            // 
             // Lista_zahtjeva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 340);
-            this.Controls.Add(this.promjeni_stanje_gmb);
             this.Controls.Add(this.box_text_upis);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.osvjezi_gmb);
@@ -137,12 +124,12 @@
             this.Name = "Lista_zahtjeva";
             this.Text = "Lista_zahtjeva";
             this.Load += new System.EventHandler(this.Lista_zahtjeva_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.podaci_za_faks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zahtjeviBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.podaci_za_faks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +162,5 @@
         private System.Windows.Forms.Button osvjezi_gmb;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox box_text_upis;
-        private System.Windows.Forms.Button promjeni_stanje_gmb;
     }
 }

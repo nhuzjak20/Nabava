@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DBLayer;
-using Nabava;
 
 namespace Nabava
 {
@@ -30,16 +29,12 @@ namespace Nabava
             string upit = $"INSERT INTO dbo.zahtjevi(naziv_podnositelja, nacin_financiranja, razlog, dekan_potvrda) VALUES ('" + naziv_podnositelja_box.Text + "', '" + način_financiranja_box.Text + "', '" + razlog_zahtjev_box + "' , 1);";
             DB.ExecuteCommand(upit);
             DB.CloseConnection();
-            MessageBox.Show("Podaci su uneseni", "Uspjeli ste", MessageBoxButtons.OK);
-            Lista_zahtjeva fr = new Lista_zahtjeva();
-            Hide();
-            fr.ShowDialog();
-            this.Close();
+            MessageBox.Show("Obavijest", "Podaci su uneseni", MessageBoxButtons.OK);
+            
         }
 
         private void nazad_Click(object sender, EventArgs e)
         {
-            
             this.Close();
         }
     }
