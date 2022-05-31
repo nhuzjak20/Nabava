@@ -35,6 +35,12 @@ namespace Nabava
             dt = new DataTable();
             adapter.Fill(dt);   
             dataGridView1.DataSource = dt; 
+            dataGridView1.AllowUserToAddRows = false;
+            DataGridViewButtonColumn buttoncollumn = new DataGridViewButtonColumn();    
+            dataGridView1.Columns.Insert(5, buttoncollumn);
+            buttoncollumn.HeaderText = "Obriši zahtjeve";
+            buttoncollumn.Text = "Obriši";
+            buttoncollumn.UseColumnTextForButtonValue = true;
             conn.Close();
         }
 
@@ -109,6 +115,28 @@ namespace Nabava
             {
                 DataView dv = dt.DefaultView;
                 dv.RowFilter = string.Format("naziv_podnositelja like '%{0}%'", box_text_upis.Text);
+            }
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 5)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                if(MessageBox.Show(string.Format("Želiš li obrisati zahtjev?", row.Cells["id"].Value), "Potvrdi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    using(SqlConnection con1 = new SqlConnection(@"Data Source=sql.bsite.net\MSSQL2016; Initial Catalog=huzjaknikola_baza; User=huzjaknikola_baza; Password=nikola55"))
+                    {
+                        using (SqlCommand cmd= new SqlCommand("DELETE FROM dbo.zahtjevi WHERE id=@id", con1))
+                        {
+                            cmd.Parameters.AddWithValue("id", row.Cells["id"].Value);
+                            con1.Open();
+                            cmd.ExecuteNonQuery();
+                            con1.Close();
+                        }
+                    }
+                    DisplayValue();
+                }
             }
         }
     }
