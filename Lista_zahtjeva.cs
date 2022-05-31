@@ -23,11 +23,15 @@ namespace Nabava
         public Lista_zahtjeva()
         {
             InitializeComponent();
+            Stvori_tablicu();
             DisplayValue();
         }
 
 
-
+        private void Stvori_tablicu()
+        {
+            
+        }
         public void DisplayValue()
         {
             conn.Open();
@@ -37,10 +41,11 @@ namespace Nabava
             dataGridView1.DataSource = dt; 
             dataGridView1.AllowUserToAddRows = false;
             DataGridViewButtonColumn buttoncollumn = new DataGridViewButtonColumn();    
-            dataGridView1.Columns.Insert(5, buttoncollumn);
+            /*dataGridView1.Columns.Insert(5, buttoncollumn);
             buttoncollumn.HeaderText = "Obriši zahtjeve";
             buttoncollumn.Text = "Obriši";
-            buttoncollumn.UseColumnTextForButtonValue = true;
+            buttoncollumn.UseColumnTextForButtonValue = true;*/
+            
             conn.Close();
         }
 
@@ -60,37 +65,45 @@ namespace Nabava
         DataTable dt = new DataTable("Zahtjevi");
         private void Lista_zahtjeva_Load(object sender, EventArgs e)
         {
+            DataGridViewButtonColumn buttoncollumn = new DataGridViewButtonColumn();
+            dataGridView1.Columns.Insert(5, buttoncollumn);
+            buttoncollumn.HeaderText = "Obriši zahtjeve";
+            buttoncollumn.Text = "Obriši";
+            buttoncollumn.UseColumnTextForButtonValue = true;
             // TODO: This line of code loads data into the 'podaci_za_faks.zahtjevi' table. You can move, or remove it, as needed.
             //this.zahtjeviTableAdapter3.Fill(this.podaci_za_faks.zahtjevi);
-           /* try
-            {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString))
-                {
-                    if(cn.State == ConnectionState.Closed) cn.Open();
-                    using (SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM dbo.zahtjevi", cn))
-                    {
-                        DataTable dt = new DataTable("Zahtjevi");
-                        da.Fill(dt);
-                        dataGridView1.DataSource = dt;
+            /* try
+             {
+                 using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["cn"].ConnectionString))
+                 {
+                     if(cn.State == ConnectionState.Closed) cn.Open();
+                     using (SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM dbo.zahtjevi", cn))
+                     {
+                         DataTable dt = new DataTable("Zahtjevi");
+                         da.Fill(dt);
+                         dataGridView1.DataSource = dt;
 
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }*/
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message,"Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
+             }*/
         }
 
         private void podnesi_zahtjev_gmb_Click(object sender, EventArgs e)
         {
+            
             dodavanje_zahtjeva fm = new dodavanje_zahtjeva();
+            this.Hide();
             fm.ShowDialog();
+            this.Close();
         }
 
         private void osvjezi_gmb_Click(object sender, EventArgs e)
         {
-            this.zahtjeviTableAdapter3.Fill(this.podaci_za_faks.zahtjevi);
+            DisplayValue();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -120,14 +133,21 @@ namespace Nabava
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 5)
+           
+            
+            
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                if(MessageBox.Show(string.Format("Želiš li obrisati zahtjev?", row.Cells["id"].Value), "Potvrdi", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(string.Format("Želiš li obrisati zahtjev?", row.Cells["id"].Value), "Potvrdi", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    using(SqlConnection con1 = new SqlConnection(@"Data Source=sql.bsite.net\MSSQL2016; Initial Catalog=huzjaknikola_baza; User=huzjaknikola_baza; Password=nikola55"))
+                    using (SqlConnection con1 = new SqlConnection(@"Data Source=sql.bsite.net\MSSQL2016; Initial Catalog=huzjaknikola_baza; User=huzjaknikola_baza; Password=nikola55"))
                     {
-                        using (SqlCommand cmd= new SqlCommand("DELETE FROM dbo.zahtjevi WHERE id=@id", con1))
+                        using (SqlCommand cmd = new SqlCommand("DELETE FROM dbo.zahtjevi WHERE id=@id", con1))
                         {
                             cmd.Parameters.AddWithValue("id", row.Cells["id"].Value);
                             con1.Open();
@@ -138,6 +158,17 @@ namespace Nabava
                     DisplayValue();
                 }
             }
+        }
+
+        private void promjeni_stanje_gmb_Click(object sender, EventArgs e)
+        {
+
+            // SqlConnection con = new SqlConnection(@"Data Source=sql.bsite.net\MSSQL2016; Initial Catalog=huzjaknikola_baza; User=huzjaknikola_baza; Password=nikola55");
+            //SqlDataAdapter adpt = new SqlDataAdapter("SELECT dekan_potvrda FROM dbo.zahtjevi", con)
+            Odobri_zahtjev fr = new Odobri_zahtjev();
+            Hide();
+            fr.ShowDialog();
+            Close();
         }
     }
 }
